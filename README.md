@@ -7,6 +7,6 @@ Involves use of data structures like ArrayList,HashMaps,Stacks etc.
 
 Made for the Codesprint for an android course.
 
-Team:
-Kushal Jain(kjcoder001)
+Team: <br/>
+Kushal Jain(kjcoder001)  <br/>
 Ayush Kothari(aayushkothari11)
