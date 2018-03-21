@@ -1,0 +1,82 @@
+{
+  "movies": [
+    {
+      "title": "the shawshank redemption",
+      "year": "1994",
+      "cast": "Morgan Freeman",
+      "genre": "Crime/Drama"
+    },
+    {
+      "title": "the usual suspects",
+      "year": "1995",
+      "cast": "Kevin Spacey",
+      "genre": "Crime/Thriller"
+    },
+    {
+      "title": "avengers",
+      "year": "2012",
+      "cast": "Robert Downy Jr",
+      "genre": "Thriller/Sci-fi"
+    },
+    {
+      "title": "inception",
+      "year": "2015",
+      "cast": "Leo Di Caprio",
+      "genre": "Thriller/Sci-fi"
+    },
+    {
+      "title": "martian",
+      "year": "2012",
+      "cast": "Matt Damon",
+      "genre": "Thriller/Sci-fi"
+    },
+    {
+      "title": "unstoppable",
+      "year": "2010",
+      "cast": "Denzel Washington",
+      "genre": "Thriller/Sci-fi"
+    },
+    {
+      "title": "titanic",
+      "year": "1997",
+      "cast": "Leo Di Caprio",
+      "genre": "Love Story"
+    },
+    {
+      "title": "twilight",
+      "year": "2008",
+      "cast": "Robert Pattinson",
+      "genre": "Love Story/Thriller"
+    },
+    {
+      "title": "sully",
+      "year": "2016",
+      "cast": "Tom Hanks",
+      "genre": "Thriller/True Story"
+    },
+    {
+      "title": "avatar",
+      "year": "2009",
+      "cast": "Sam Worthington",
+      "genre": "Thriller/Sci-fi"
+    },
+    {
+      "title": "interstellar",
+      "year": "2014",
+      "cast": "Mathew Mcconaughey",
+      "genre": "Thriller/Sci-fi"
+    },
+    {
+      "title": "gladiator",
+      "year": "2000",
+      "cast": "Russel Crowe",
+      "genre": "Drama"
+    },
+    {
+      "title": "rocky",
+      "year": "1976",
+      "cast": " Sylvester Stallone",
+      "genre": "Sports/Drama"
+    }
+  ]
+}
