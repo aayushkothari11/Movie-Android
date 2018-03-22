@@ -230,8 +230,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(stackedLayout.empty())
         {
-            Toast.makeText(this, "YOU LOST!!!", Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(this, "YOU LOST!!!", Toast.LENGTH_LONG).show();
+            display.setText(randomMovie);
             //display.setText(randomMovie);
         }
 
@@ -239,17 +239,18 @@ public class MainActivity extends AppCompatActivity {
         {
             if(display.getText().toString().equals(randomMovie))
             {
-                Toast.makeText(this, "YOU WON!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "YOU WON!", Toast.LENGTH_LONG).show();
+
             }
             else{
-                Toast.makeText(this, "TRY AGAIN!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "TRY AGAIN!", Toast.LENGTH_LONG).show();
             }
         }
         input=(EditText)findViewById(R.id.input);
 
         if(input.getText().toString().length()>1)
         {
-            Toast.makeText(this, "PLEASE ENTER ONLY ONE LETTER", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "PLEASE ENTER ONLY ONE LETTER", Toast.LENGTH_LONG).show();
             input.setText("");
         }
         else if(!input.getText().toString().equals("")){
@@ -281,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else
             {
-                Toast.makeText(this, "ULLU BANAYEGA KYA!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "CHARACTER ALREADY ENTERED!", Toast.LENGTH_LONG).show();
                 input.setText("");
             }
         }
