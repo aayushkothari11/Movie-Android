@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
             //display.setText(randomMovie);
         }
 
-        if(!display.getText().toString().contains("#"))
+        else if(!display.getText().toString().contains("#"))
         {
             if(display.getText().toString().equals(randomMovie))
             {
