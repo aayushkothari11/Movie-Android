@@ -35,27 +35,33 @@ public class MainActivity extends AppCompatActivity {
     HashMap<String,ArrayList<String>> movie=new HashMap<>();
     TextView display,hint;
     EditText input;
-    StackedLayout stackedLayout,displayLayout;
-    String randomMovie;
-    char temp[];
-    ArrayList<Character> used;
-    int hintNo=0;
+    StackedLayout stackedLayout,displayLayout;// Layout to hold tiles
+    String randomMovie;// movie selected for the current game
+    char temp[]; // array to display / loop through the input
+    ArrayList<Character> used;// keeps track of characters entered by the user
+    int hintNo=0;// hint number
     String HOLLYWOOD="HOLLYWOOD";
-    Stack<Character> life=new Stack<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //declarations,initialising xml attributes
         display=(TextView)findViewById(R.id.display);
         hint=(TextView)findViewById(R.id.hint);
         stackedLayout=new StackedLayout(this);
         LinearLayout linearLayout=(LinearLayout)findViewById(R.id.life);
         linearLayout.addView(stackedLayout);
         used=new ArrayList<>();
-        //LinearLayout display=(LinearLayout)findViewById(R.id.display);
-       // display.addView(displayLayout);
 
+
+        //Receiving intent from previous activity
         Intent intent=getIntent();
+
+
+        //Reading JSON from file and parsing it.The json fields/children are stored in corresponding array lists
+        // and then linked with the movie in a hash map.
         try {
             JSONObject movieJson=new JSONObject(loadJSONFromAsset());
             JSONArray movieArray=movieJson.getJSONArray("movies");
@@ -76,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //Linking movies with hints in a Hash Map,with key as movie name and value an array list of hints
+        // in a predefined order.
         for(int i=0;i<movies.size();i++)
        {
            movie.put(movies.get(i),new ArrayList<String>());
@@ -87,6 +95,12 @@ public class MainActivity extends AppCompatActivity {
         Log.i("move",movie.toString());
 
     }
+
+    /**
+     * A helper method to load json as an input stream so that it can be parsed by JSON classes of android.
+     * Called in onCreate() to parse json and populate the array lists.
+     * @return json String
+     */
     public String loadJSONFromAsset()
     {
         String json=null;
@@ -103,11 +117,18 @@ public class MainActivity extends AppCompatActivity {
         }
         return json;
     }
+
+
+    /**
+     * onClick() listener for start button.Must be clicked first to initialize a new game.
+     * -->Resets everything to start a new game.
+     * --> Randomly chooses a movie from the movies array list and sets it in the text view.
+     * @param view
+     */
     public void start(View view)
     {
         Log.i("tag",movie.toString()+"");
         display.setText("");
-
         hint.setText("");
         hintNo=0;
         while(!stackedLayout.empty())
@@ -115,7 +136,13 @@ public class MainActivity extends AppCompatActivity {
             stackedLayout.pop();
 
         }
+
         used.clear();
+
+
+        /**
+         *The hollywood string is a stack with letter tiles (LetterTile)  stacked in a linear layout.
+         */
 
         for(int i=0;i<HOLLYWOOD.length();i++)
         {
@@ -124,34 +151,35 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
-
-
         input=(EditText)findViewById(R.id.input);
         Random random=new Random();
 
         randomMovie=movies.get(random.nextInt(movies.size()));
         Log.i("tag",randomMovie);
         char randomMovieArr[]=randomMovie.toCharArray();
-         temp=new char[randomMovie.length()];
+        temp=new char[randomMovie.length()];
         Arrays.fill(temp,'#');
 
         Log.i("",temp+" "+randomMovie);
         for(int i=0;i<temp.length;i++)
         {
-           // displayLayout.push(new LetterTile(this,temp[i]));
          display.append(temp[i]+"");
         }
 
 
     }
 
-
+    /**
+     * onClick() for hint button.
+     * First hint can be used at the beginning of the game.
+     * Second hint once you guess one-third of the movie correctly.
+     * Third hint after you guess one-half of the movie.
+     * @param view
+     */
     public void hint(View view)
     {
 
         ArrayList<String> hints=movie.get(randomMovie);
-
         char check[]=display.getText().toString().toCharArray();
         int c=0;
         Log.i("ayush",display.getText().toString());
@@ -186,9 +214,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
+    /**
+     * onCLick() for check button.
+     * Checks whether the input character is valid or invalid.
+     * If invalid it removes a tile from hollywood string(pops() from stack)
+     * If valid it appends the character to the text view.
+     *
+     * Also prevents the user from entering the same letter twice.
+     * @param view
+     */
     public void check(View view)
     {
-
 
         if(stackedLayout.empty())
         {
@@ -224,10 +262,13 @@ public class MainActivity extends AppCompatActivity {
                     input.setText("");
 
                 } else {
+
                     for (int i = 0; i < randomMovie.length(); i++) {
+
                         if (randomMovie.charAt(i) == ch) {
                             temp[i] = ch;
                         }
+
                         input.setText("");
                     }
                     display.setText("");
