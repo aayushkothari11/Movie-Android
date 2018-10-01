@@ -8,5 +8,5 @@ Involves use of data structures like ArrayList,HashMaps,Stacks etc.
 Made for the Codesprint for an android course.
 
 ## Team: <br/>
-@kjcoder001  <br/>
-@aayushkothari11
+[Kushal Jain](https://github.com/kjcoder001/) <br/>
+[Ayush Kothari](https://github.com/aayushkothari11/)
